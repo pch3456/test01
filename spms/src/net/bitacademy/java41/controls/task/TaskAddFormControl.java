@@ -25,7 +25,7 @@ public class TaskAddFormControl implements PageControl{
 		  int no = Integer.parseInt(params.get("projectNo")[0]);
           
 		  
-		  model.put("projectInfo",projectService.get(no));
+		  model.put("projectInfo",projectService.getProject(no));
 
 		  return "/task/newForm.jsp";
 	  		

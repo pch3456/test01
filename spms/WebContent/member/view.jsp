@@ -38,7 +38,18 @@
 <c:when test="${memberInfo.level == 2}">PM</c:when>
 <c:otherwise>손님</c:otherwise>
 </c:choose><br>
-
+<!--  
+사진: <br>
+<c:choose>
+	<c:when test="${memberInfo.photos!=null }">
+		<img width="120" height="150" id="memberPhot" src="${rootPath }/file/${memberInfo.photos[0]}">
+	</c:when>
+	<c:otherwise>
+		<img width="120" height="150" id="memberPhot" src="${rootPath}/images/test01.png">
+	</c:otherwise>
+</c:choose>
+<br>
+-->
 <p>
 <a href="list.do">[목록]</a>
 <a href="passwordChange.do?email=${memberInfo.email}">[암호변경]</a>

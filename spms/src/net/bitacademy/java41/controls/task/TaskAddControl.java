@@ -51,7 +51,7 @@ public class TaskAddControl implements PageControl{
 		UI.write(new File(path));
 		
 		int no = Integer.parseInt((String)params.get("no"));
-		model.put("projectInfo",projectService.get(no));
+		model.put("projectInfo",projectService.getProject(no));
 		taskService.addTask(new Task()
 						.setTitle((String)params.get("title"))
 						.setUIProtoURL(filename)

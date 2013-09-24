@@ -1,11 +1,10 @@
 package net.bitacademy.java41.listeners;
 
-import java.io.FileReader;
+import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Properties;
 import java.util.Set;
 
 import javax.servlet.ServletContext;
@@ -14,6 +13,9 @@ import javax.servlet.ServletContextListener;
 
 import net.bitacademy.java41.annotations.Component;
 
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.reflections.Reflections;
 
 public class ContextLoaderListener implements ServletContextListener {
@@ -28,8 +30,7 @@ public class ContextLoaderListener implements ServletContextListener {
 		objTable.put("rootRealPath", ctx.getRealPath("/"));
 		
 		try {
-			loadProperties(
-					ctx.getRealPath("/WEB-INF/db.properties"));
+			prepareMybatis();
 			prepareObjects();
 			prepareDependancy();
 			saveToContext();
@@ -39,6 +40,14 @@ public class ContextLoaderListener implements ServletContextListener {
 		}
 	}
 	
+	private void prepareMybatis() throws Exception{
+		String mybatisConfig = "net/bitacademy/java41/dao/mybatis-config.xml";
+		InputStream in = Resources.getResourceAsStream(mybatisConfig);
+		SqlSessionFactory sqlSessionFactory = 
+			new SqlSessionFactoryBuilder().build(in);
+		objTable.put("sqlSessionFactory", sqlSessionFactory);
+	}
+
 	private void saveToContext() {
 		Enumeration<String> keyList = objTable.keys();
 		String key = null;
@@ -91,29 +100,14 @@ public class ContextLoaderListener implements ServletContextListener {
 	private Object findInstanceByClass(Class paramClass) {
 		Collection<Object> instanceList = objTable.values();
 		for(Object obj : instanceList) {
-			if (obj.getClass() == paramClass) {
+			if (paramClass.isInstance(obj)) {
 				return obj;
 			}
 		}
 		return null;
 	}
 	
-	@SuppressWarnings("rawtypes")
-	private void loadProperties(String propPath) throws Exception {
-		Properties props = new Properties();
-		props.load( new FileReader(propPath));
-		
-		Enumeration enums = props.keys();
-		String key = null;
-		while(enums.hasMoreElements()) {
-			key = (String)enums.nextElement();
-			objTable.put(key, ((String)props.get(key)).trim()); 
-		}
-	}
-	
-	/**
-	 * 1) classpath를 뒤져서 net.bitacademy.java41 패키지를 찾는다.
-	 */
+
 	@SuppressWarnings("rawtypes")
 	private void prepareObjects() throws Exception {
 		Reflections reflector = new Reflections("net.bitacademy.java41");

@@ -1,6 +1,5 @@
 package net.bitacademy.java41.services;
 
-import java.sql.Connection;
 import java.util.List;
 
 import net.bitacademy.java41.annotations.Component;
@@ -45,54 +44,30 @@ public class ProjectService {
 		return projectDao.get(no);
 	}
 	
+	
 	public void addProject(Project project) throws Exception {
-		Connection con = dbPool.getConnection();
-		con.setAutoCommit(false);
 		try {
-			projectDao.add(project, con);
-			con.commit();
+			projectDao.add(project);
 		} catch (Exception e) {
-			con.rollback();
+			throw e;
+		} finally {
+		}
+		
+	}
+	
+	public void removeProject(int no) throws Exception {
+		try {
+			projectDao.delete(no);
+		} catch (Exception e) {
 			throw e;
 			
 		} finally {
-			con.setAutoCommit(true);
-			dbPool.returnConnection(con);
 		}
-	}
-	
-	public void deleteProject(int no) throws Exception{
-		Connection con = dbPool.getConnection();
-		con.setAutoCommit(false);
-		try {
-			taskDao.deleteMtaskByPno(no,con);
-			projectDao.remove2(no,con);
-			taskDao.deleteTaskByPno(no, con);
-			projectDao.remove(no,con);
-			
-			con.commit();
-		} catch (Exception e) {
-			con.rollback();
-			throw e;
-			
-		} finally {
-			con.setAutoCommit(true);
-			dbPool.returnConnection(con);
-		}
-	}
 		
-	  
-	    
-		
-	
-	public Project get(int no) throws Exception {
-		Project project = projectDao.get(no);
-	   return project;
 	}
 
 	public void change(Project project) throws Exception {
 		projectDao.change(project);
-		
 	}
 }
 

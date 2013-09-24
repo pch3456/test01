@@ -31,7 +31,7 @@ public class TaskViewControl implements PageControl{
 		int pno = Integer.parseInt(params.get("pno")[0]);
 		
 		model.put("task", taskService.getTask(no));
-		model.put("projectInfo", projectService.get(pno));
+		model.put("projectInfo", projectService.getProject(pno));
 		
 		return "/task/view.jsp";
 	}

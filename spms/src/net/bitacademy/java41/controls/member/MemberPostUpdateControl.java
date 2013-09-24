@@ -32,32 +32,34 @@ public class MemberPostUpdateControl implements PageControl {
 		Map<String,Object> params = 
 				(Map<String,Object>)model.get("params");
 
-		FileItem photo = (FileItem)params.get("photo");
-		String filename = this.getNewFileName();
-		String path = rootRealPath + "file/" + filename;
-		photo.write(new File(path));
+//		FileItem photo = (FileItem)params.get("photo");
+//		String filename = this.getNewFileName();
+//		String path = rootRealPath + "file/" + filename;
+//		photo.write(new File(path));
 
 
 		String serverpwd = (String)params.get("serverpwd");
 
-
 		if(((String)params.get("password")).equals(serverpwd)){
-
+			
 			Member member = new Member()
 			.setEmail((String)params.get("email"))
 			.setName((String)params.get("name"))
 			.setTel((String)params.get("tel"))
 			.setBlog((String)params.get("blog"))
 			.setDetailAddress((String)params.get("detailAddr"))
-			.setTag((String)params.get("tag"))
-			.setPhotos(new String[]{filename});
+			.setTag((String)params.get("tag"));
+		//	.setPhotos(new String[]{filename});
 
 			memberService.change(member);
+			String email = (String)params.get("email");
+			
+			model.put("memberInfo", memberService.getMember(email));
 
-			return "/member/viewsucess.jsp";
+			return "/member/view.jsp";
 
 		}else{
-			return "/member/viewfail.jsp";
+			return "/member/view.jsp";
 
 		}	  
 	}

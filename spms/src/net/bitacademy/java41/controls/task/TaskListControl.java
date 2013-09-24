@@ -31,7 +31,7 @@ public class TaskListControl implements PageControl{
 		
 		int no = Integer.parseInt(params.get("projectNo")[0]);
          
-		model.put("projectInfo",projectService.get(no));
+		model.put("projectInfo",projectService.getProject(no));
 		model.put("list", taskService.getTaskList(no));
 		return "/task/list.jsp";
 	}

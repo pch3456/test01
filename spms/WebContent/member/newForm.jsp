@@ -24,7 +24,7 @@
 
 <div id="content">
 <h1>멤버 등록</h1>
-<form action="add.do" method="post">
+<form action="add.do" method="post" enctype="multipart/form-data">
 *이메일: <input type="text" name="email"><br>
 *암호: <input type="password" name="password"><br>
 암호 확인: <input type="password" name="password2"><br>

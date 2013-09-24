@@ -31,12 +31,12 @@ public class MemberDeleteControl implements PageControl {
 				
 				memberService.deleteMember(email);
 				
-				
+				model.put("list", memberService.getMemberList());
 				if(level == 0){
 					return "/auth/LoginForm.jsp";
 			
 				}else{
-					return "/member/delete.jsp";
+					return "/member/list.jsp";
 				}
 			
 		

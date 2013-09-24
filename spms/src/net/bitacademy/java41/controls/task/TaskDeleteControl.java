@@ -31,7 +31,7 @@ public class TaskDeleteControl implements PageControl{
 		int pno = Integer.parseInt(params.get("pno")[0]);
 		
 		taskService.deleteTask(no);
-		model.put("projectInfo", projectService.get(pno));
+		model.put("projectInfo", projectService.getProject(pno));
 		
 		return "/task/list.do?projectNo=" + pno;
 	}

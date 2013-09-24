@@ -29,7 +29,7 @@ public class ProjectDeleteControl implements PageControl {
 				int level = Integer.parseInt(params.get("level")[0]);
 				int no = Integer.parseInt(params.get("no")[0]);
 				
-				projectService.deleteProject(no);
+				projectService.removeProject(no);
 				model.put("list", projectService.getProjectList());
 				
 				if(level == 0){

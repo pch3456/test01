@@ -25,7 +25,7 @@ public class ProjectUpdateControl implements PageControl {
 		  int no = Integer.parseInt(params.get("no")[0]);
           
 		  
-		  model.put("projectInfo",projectService.get(no));
+		  model.put("projectInfo",projectService.getProject(no));
 
 		  return "/project/updateForm.jsp";
 	  		

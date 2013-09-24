@@ -59,7 +59,7 @@ public class TaskPostUpdateControl implements PageControl{
 
 		int pno = task.getPno();
 		model.put("list", taskService.getTaskList(pno));
-		model.put("projectInfo",projectService.get(pno));
+		model.put("projectInfo",projectService.getProject(pno));
 		return "/task/list.jsp";
 
 	}

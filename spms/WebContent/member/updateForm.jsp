@@ -41,8 +41,8 @@
 <c:when test="${memberInfo.level == 2}">PM</c:when>
 <c:when test="${memberInfo.level == 9}">손님</c:when>
 </c:choose><br>
-사진: <input type="file" name="photo"  value="${memberInfo.photos}"><br>
-1111
+<input type="hidden" name="photo"  value="${memberInfo.photos}"><br>
+
 <input type="submit" value="변경">
 <input type="reset" value="취소">
 </form>

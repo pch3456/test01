@@ -40,10 +40,22 @@ UI 프로토타입 : <br>
 	</c:when>
 </c:choose>
 
+
 <p>
-<a href="list.do?projectNo=${task.pno }">[목록]</a>
-<a href="updateForm.do?no=${task.tno}">[변경]</a>
-<a href="delete.do?no=${task.tno}&pno=${projectInfo.no}">[삭제]</a>
+
+<c:choose>
+	<c:when test="${member.level == 0}">
+		<a href="list.do?projectNo=${task.pno }">[목록]</a>
+		<a href="updateForm.do?no=${task.tno}">[변경]</a>
+		<a href="delete.do?no=${task.tno}&pno=${projectInfo.no}">[삭제]</a>
+	</c:when>
+	<c:otherwise>
+	<a href="list.do?projectNo=${task.pno }">[목록]</a>
+	</c:otherwise>
+</c:choose>
+</p>
+<p>
+
 </p>
 
 	</div><!-- end content -->

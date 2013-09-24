@@ -40,7 +40,16 @@
 </c:forEach>
 </table>
 
-<p><a href="${rootPath}/task/addForm.do?projectNo=${projectInfo.no}">[New Task]</a></p>
+
+<c:choose>
+	<c:when test="${member.level == 0}">
+		<p><a href="${rootPath}/task/addForm.do?projectNo=${projectInfo.no}">[New Task]</a></p>
+
+	</c:when>
+	<c:otherwise>
+	</c:otherwise>
+</c:choose>
+
 
 	</div><!-- end content -->
 		</div><!-- end inner -->

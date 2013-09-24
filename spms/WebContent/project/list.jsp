@@ -42,8 +42,16 @@
 </c:forEach>
 </table>
 
-<p><a href="${rootPath}/project/addForm.do">[신규 프로젝트]</a></p>
+
+<c:choose>
+	<c:when test="${member.level == 0}">
+		<p><a href="${rootPath}/project/addForm.do">[신규 프로젝트]</a></p>
 ${project.pno }
+	</c:when>
+	<c:otherwise>
+	</c:otherwise>
+</c:choose>
+
 
 
 

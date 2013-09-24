@@ -40,9 +40,18 @@ ${project.content }<br>
 태그: ${project.tag }<br>
 
 <p>
-<a href="list.do">[목록]</a>
-<a href="updateForm.do?no=${project.no}">[변경]</a>
-<a href="delete.do?no=${project.no}&level=${sessionScope.member.level}">[삭제]</a>
+
+<c:choose>
+	<c:when test="${member.level == 0}">
+		<a href="list.do">[목록]</a>
+		<a href="updateForm.do?no=${project.no}">[변경]</a>
+		<a href="delete.do?no=${project.no}&level=${sessionScope.member.level}">[삭제]</a>
+
+	</c:when>
+	<c:otherwise>
+	<a href="list.do">[목록]</a>
+	</c:otherwise>
+</c:choose>
 </p>
 
 	</div><!-- end content -->
