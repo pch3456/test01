@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="net.bitacademy.java41.dao.TaskDao">
+	<select id="list" 
+			parameterType="int" 
+			resultType="Task">
+	  	select PNO, TNO, TITLE, UIPROTOURL, CONTENT as context, START_DATE as startDate, END_DATE as endDate
+		from SPMS_TASKS
+		where PNO = #{value} order by TNO asc
+	</select>
+	
+	<insert id="add" parameterType = "map" useGeneratedKeys="true" keyProperty="tno">
+		insert into SPMS_TASKS(TITLE, UIPROTOURL, CONTENT, START_DATE, END_DATE, PNO)
+		values(#{task.title},#{photos},#{task.context},#{task.startDate},#{task.endDate},#{task.pno})	
+	</insert>
+	
+	<insert id="addMemberTask" parameterType = "Task" >
+		insert into SPMS_MEMBTASK(TNO, EMAIL, PNO)
+		values(#{tno},#{email},#{pno})
+	</insert>
+	
+	<select id="get" 
+			parameterType="int" 
+			resultType="Task">
+	  	select PNO, TITLE, UIPROTOURL , CONTENT as context, START_DATE as startDate, END_DATE as endDate, TNO
+		from SPMS_TASKS
+		where TNO = #{value}
+	</select>
+	
+	<update id="change" parameterType = "Task">
+		update SPMS_TASKS set
+			TITLE=#{title},
+			CONTENT=#{context},
+	 		START_DATE=#{startDate},
+			END_DATE=#{endDate},
+			UIPROTOURL=#{UIProtoURL}
+		where TNO=#{tno}
+	</update>
+	
+	<delete id="deleteMTask" parameterType="int">
+		delete from SPMS_MEMBTASK
+		where TNO = #{value}
+	</delete>
+	
+	<delete id="delete" parameterType="int">
+		delete from SPMS_TASKS
+		where TNO = #{value}
+	</delete>
+	
+</mapper> 
