@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<books>
+	<book/>
+	<book>
+		<title>1 &lt; 2 인가?</title>
+		<!--중첩불가
+		<content>aaaa<b>abbb</content>ab</b> !-->
+		<_page></_page>
+		
+		<한글></한글>
+		<!-- <.data></.data> 앞에 . 불가능-->
+		<!-- <1page></1page> 앞에 숫자 불가능-->
+		<page2page></page2page>
+		<page-page></page-page>
+		<!-- <Page></page> 대소문자 구분-->
+	</book>
+</books>
+
+<!-- 에러!! 
+<books>
+</books>
+ -->
