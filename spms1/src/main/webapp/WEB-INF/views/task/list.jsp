@@ -13,6 +13,8 @@
 
 
 <link rel="stylesheet" href="${rootPath}/maincss/touching.css" type="text/css" />
+<link href="${rootPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${rootPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
  <!-- Generated at www.csscreator.com -->
@@ -25,7 +27,7 @@
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
 <h1>${projectInfo.title }'s Task</h1>
-<table>
+<table class="table">
 <tr>
 	<th>Task</th>
 	<th>시작일자</th>
@@ -42,7 +44,7 @@
 
 
 <c:choose>
-	<c:when test="${member.level == 0}">
+	<c:when test="${loginInfo.level == 0}">
 		<p><a href="${rootPath}/task/add.do?projectNo=${projectInfo.no}">[New Task]</a></p>
 
 	</c:when>
@@ -54,8 +56,6 @@
 	</div><!-- end content -->
 		</div><!-- end inner -->
 	</div><!-- end outer -->
- 	<div id="footer"><h1>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.co.kr/" >구글형아</a></a>
- 	</h1>
- 	</div>
+ 	
 </div><!-- end container -->
 </body></html>

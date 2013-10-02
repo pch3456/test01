@@ -12,6 +12,8 @@
 
 
 <link rel="stylesheet" href="${rootPath}/maincss/touching.css" type="text/css" />
+<link href="${rootPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${rootPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
  <!-- Generated at www.csscreator.com -->
@@ -44,7 +46,7 @@ UI 프로토타입 : <br>
 <p>
 
 <c:choose>
-	<c:when test="${member.level == 0}">
+	<c:when test="${loginInfo.level == 0}">
 		<a href="list.do?projectNo=${task.pno }">[목록]</a>
 		<a href="update.do?no=${task.tno}">[변경]</a>
 		<a href="delete.do?no=${task.tno}&pno=${projectInfo.no}">[삭제]</a>
@@ -61,9 +63,7 @@ UI 프로토타입 : <br>
 	</div><!-- end content -->
 		</div><!-- end inner -->
 	</div><!-- end outer -->
- 	<div id="footer"><h1>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.co.kr/" >구글형아</a></a>
- 	</h1>
- 	</div>
+ 	
 </div><!-- end container -->
 </body></html>
 

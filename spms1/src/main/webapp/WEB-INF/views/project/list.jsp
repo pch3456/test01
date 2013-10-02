@@ -13,6 +13,8 @@
 
 
 <link rel="stylesheet" href="${rootPath}/maincss/touching.css" type="text/css" />
+<link href="${rootPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${rootPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
  <!-- Generated at www.csscreator.com -->
@@ -25,7 +27,7 @@
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
 <h1>프로젝트</h1>
-<table>
+<table class="table">
 <tr>
 	<th>번호</th>
 	<th>프로젝트</th>
@@ -58,9 +60,7 @@ ${project.pno }
 	</div><!-- end content -->
 		</div><!-- end inner -->
 	</div><!-- end outer -->
- 	<div id="footer"><h1>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.co.kr/" >구글형아</a></a>
- 	</h1>
- 	</div>
+ 	
 </div><!-- end container -->
 </body></html>
 

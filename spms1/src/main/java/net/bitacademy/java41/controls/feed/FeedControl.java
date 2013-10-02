@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import net.bitacademy.java41.services.FeedService;
 import net.bitacademy.java41.services.ProjectService;
 import net.bitacademy.java41.vo.Feed;
+import net.bitacademy.java41.vo.LoginInfo;
 import net.bitacademy.java41.vo.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class FeedControl {
 	public String add(
 			Feed feed,
 			HttpSession session) throws Exception {
-		Member member = (Member)session.getAttribute("member");
-		String email = member.getEmail();
+		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
+		String email = loginInfo.getEmail();
 		feed.setEmail(email);
 
 		feedService.addFeed(feed);

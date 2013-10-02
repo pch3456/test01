@@ -11,6 +11,8 @@
 
 
 <link rel="stylesheet" href="${rootPath}/maincss/touching.css" type="text/css" />
+<link href="${rootPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${rootPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 </head>
 <body>
  <!-- Generated at www.csscreator.com -->
@@ -42,9 +44,7 @@ UI Proto: <input type="file" name="URL"  value="${taskInfo.UIProtoURL}"><br>
 	</div><!-- end content -->
 		</div><!-- end inner -->
 	</div><!-- end outer -->
- 	<div id="footer"><h1>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.google.co.kr/" >구글형아</a></a>
- 	</h1>
- 	</div>
+ 
 </div><!-- end container -->
 </body></html>
 

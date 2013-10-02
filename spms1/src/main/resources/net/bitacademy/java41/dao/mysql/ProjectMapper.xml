@@ -20,7 +20,7 @@
 	    		START_DATE as startDate,
 	    		END_DATE as endDate
 	    from SPMS_PRJS
-	    order by PNO desc
+	    order by PNO
 	</select>
 	
 	<select id="get" parameterType="int" 
