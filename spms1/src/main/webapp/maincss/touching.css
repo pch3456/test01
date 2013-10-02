@@ -94,18 +94,20 @@ margin: 0px;
 	
 }
 
+
 #memberPhoto {
 	width: 80%;
 	float: left;
 	margin-top: 10px;
 	margin-left: 20px;
+	
+	
 }
 #banner img {padding:10px 0px;} 
 #bannertitle{padding-top:20px;font-size:4em;font-weight:bold;float: left;margin-left: 40%}
 
 /* -----------------content--------------------- */
 #content {
-
 background:#ffffff  url('content.jpg') no-repeat top right;
 padding-top: 70px;
 margin-left: 200px;

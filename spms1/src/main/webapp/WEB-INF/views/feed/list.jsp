@@ -50,8 +50,8 @@
 							<div class="panel panel-success">
 								<div class="panel-heading">
 									<h3 class="panel-title">${feed.email}</h3>
-									${feed.regDate} <a
-										href="delete.do?fno=${feed.fno}&pno=${projectInfo.no }">[삭제]</a>
+									${feed.regDate} 
+									<c:if test="${loginInfo.email == feed.email}"><a href="delete.do?fno=${feed.fno}&pno=${projectInfo.no }">[삭제]</a></c:if>
 								</div>
 								<div class="panel-body">${feed.content}</div>
 							</div>

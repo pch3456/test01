@@ -27,43 +27,69 @@
 				<jsp:include page="/sidebar.do"></jsp:include>
 
 				<div id="content">
-					<table class="table">
-						<h1>멤버 정보</h1>
-						이메일: ${memberInfo.email}
-						<br> 이름: ${memberInfo.name }
-						<br> 전화: ${memberInfo.tel }
-						<br> 블로그: ${memberInfo.blog }
-						<br> 상세주소: ${memberInfo.detailAddress }
-						<br> 태그: ${memberInfo.tag }
-						<br> 등록일: ${memberInfo.regDate }
-						<br> 권한:
-						<c:choose>
-							<c:when test="${memberInfo.level == 0}">일반회원</c:when>
-							<c:when test="${memberInfo.level == 1}">관리자</c:when>
-							<c:when test="${memberInfo.level == 2}">PM</c:when>
-							<c:otherwise>손님</c:otherwise>
-						</c:choose>
-						<br> 사진:
-						<br>
-						<c:choose>
-							<c:when test="${memberInfo.photos!=null }">
-								<img width="120" height="150" id="memberPhot"
-									src="${rootPath }/file/${memberInfo.photos[0]}">
-							</c:when>
-							<c:otherwise>
-								<img width="120" height="150" id="memberPhot"
-									src="${rootPath}/images/test01.png">
-							</c:otherwise>
-						</c:choose>
-
-						<p>
-							<a href="list.do">[목록]</a>
-							<!--  <a href="passwordChange.do?email=${memberInfo.email}">[암호변경]</a>-->
-							<a href="update.do?email=${memberInfo.email}">[변경]</a> <a
-								href="delete.do?email=${memberInfo.email}&level=${sessionScope.member.level}">[삭제]</a>
-						</p>
-
+					<h1>멤버 정보</h1>
+					<table cellpadding="20px">
+						<tr>
+							<th><c:choose>
+									<c:when test="${memberInfo.photos!=null }">
+										<img width="120" height="150" id="memberPhot"
+											src="${rootPath }/file/${memberInfo.photos[0]}">
+									</c:when>
+									<c:otherwise>
+										<img width="120" height="150" id="memberPhot"
+											src="${rootPath}/images/test01.png">
+									</c:otherwise>
+								</c:choose></th>
+							<th>
+								<table class="table">
+									<tr>
+										<th>이메일</th>
+										<td>${memberInfo.email}</td>
+									</tr>
+									<tr>
+										<th>이름</th>
+										<td>${memberInfo.name }</td>
+									</tr>
+									<tr>
+										<th>전화</th>
+										<td>${memberInfo.tel }</td>
+									</tr>
+									<tr>
+										<th>블로그</th>
+										<td>${memberInfo.blog }</td>
+									</tr>
+									<tr>
+										<th>상세주소</th>
+										<td>${memberInfo.detailAddress }</td>
+									</tr>
+									<tr>
+										<th>태그</th>
+										<td>${memberInfo.tag }</td>
+									</tr>
+									<tr>
+										<th>등록일</th>
+										<td>${memberInfo.regDate }</td>
+									</tr>
+									<tr>
+										<th>권한</th>
+										<td><c:choose>
+												<c:when test="${memberInfo.level == 0}">일반회원</c:when>
+												<c:when test="${memberInfo.level == 1}">관리자</c:when>
+												<c:when test="${memberInfo.level == 2}">PM</c:when>
+												<c:otherwise>손님</c:otherwise>
+											</c:choose></td>
+									</tr>
+								</table>
 					</table>
+
+					<p>
+						<a href="list.do">[목록]</a>
+						<!--  <a href="passwordChange.do?email=${memberInfo.email}">[암호변경]</a>-->
+						<a href="update.do?email=${memberInfo.email}">[변경]</a> <a
+							href="delete.do?email=${memberInfo.email}&level=${sessionScope.member.level}">[삭제]</a>
+					</p>
+
+
 				</div>
 
 
