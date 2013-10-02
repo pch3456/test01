@@ -15,7 +15,7 @@
 </c:choose>
 </div>
 <div id="memberInfo">
-<p id="name"><a href="${rootPath}/member/updateMyInfoForm.do?email=${member.email}">${member.name}</a></p>
+<p id="name"><a href="${rootPath}/member/update.do?email=${member.email}">${member.name}</a></p>
 <p id="tel">${member.tel }</p>
 <p id="email">${member.email }</p>
 

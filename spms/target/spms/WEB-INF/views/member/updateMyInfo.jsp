@@ -25,7 +25,7 @@
 <h1>멤버 변경</h1>
 <form action="update.do" method="post" >
 *이메일: <input type="text" name="email" value="${memberInfo.email}" readonly><br>
-*암호: <input type="password" name="password"><a href="passwordChange.do?email=${memberInfo.email}">[암호변경]</a><br>
+*암호: <input type="password" name="password1"><a href="passwordChange.do?email=${memberInfo.email}">[암호변경]</a><br>
 <input type="hidden" name="serverpwd" value="${memberInfo.password}">
 *이름: <input type="text" name="name" value="${memberInfo.name}"><br>
 *전화: <input type="text" name="tel" value="${memberInfo.tel}"><br>

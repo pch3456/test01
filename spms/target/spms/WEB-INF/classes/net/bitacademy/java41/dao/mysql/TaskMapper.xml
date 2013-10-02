@@ -12,9 +12,9 @@
 		where PNO = #{value} order by TNO asc
 	</select>
 	
-	<insert id="add" parameterType = "Task" useGeneratedKeys="true" keyProperty="tno">
+	<insert id="add" parameterType = "map" useGeneratedKeys="true" keyProperty="tno">
 		insert into SPMS_TASKS(TITLE, UIPROTOURL, CONTENT, START_DATE, END_DATE, PNO)
-		values(#{title},#{UIProtoURL},#{context},#{startDate},#{endDate},#{pno})	
+		values(#{task.title},#{photos},#{task.context},#{task.startDate},#{task.endDate},#{task.pno})	
 	</insert>
 	
 	<insert id="addMemberTask" parameterType = "Task" >

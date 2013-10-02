@@ -1,7 +1,6 @@
 package net.bitacademy.java41.controls.member;
 
 import java.io.File;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 

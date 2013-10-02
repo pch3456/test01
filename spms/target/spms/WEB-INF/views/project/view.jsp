@@ -26,7 +26,7 @@
 <p>
 <a href="view.do?no=${project.no}">[기본정보]</a> | 
 <a href="../task/list.do?projectNo=${project.no}">[작업들]</a> | 
-<a href="../feed/list.do?projectNo=${project.no}">[게시판]</a>
+<a href="../feed/list.do?projectNo=${project.no}">[피드]</a>
 </p>
 </div>
 
