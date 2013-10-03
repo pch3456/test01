@@ -8,10 +8,12 @@
 			<c:choose>
 				<c:when test="${loginInfo.photoPath !=null }">
 					<img id="memberPhoto"
-						src="${rootPath }/file/${loginInfo.photoPath}">
+						src="${rootPath }/file/${loginInfo.photoPath}" style="-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
 				</c:when>
 				<c:otherwise>
-					<img id="memberPhoto" src="${rootPath}/images/test01.png">
+					<img id="memberPhoto" src="${rootPath}/images/test01.png" style="-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
 				</c:otherwise>
 			</c:choose>
 		</div>

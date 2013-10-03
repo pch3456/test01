@@ -13,7 +13,8 @@
 	type="text/css" />
 <link href="${rootPath}/css/bootstrap.css" rel="stylesheet">
 <link href="${rootPath}/css/bootstrap-theme.min.css" rel="stylesheet">
-
+<link href="${rootPath}/css/carousel.css" rel="stylesheet">
+<script src="${rootPath}/js/holder.js"></script>
 </head>
 <body>
 	<!-- Generated at www.csscreator.com -->
@@ -21,13 +22,19 @@
 		<jsp:include page="/header.do"></jsp:include>
 		<jsp:include page="/sidebar.do"></jsp:include>
 		<div id="outer">
-		
-			<div id="inner">
-			<div class="container">
 
-				<center>
-				<iframe src="${rootPath}/spms.do" width="510"height="510"" frameborder=0></iframe>
-				</center>
+			<div id="inner">
+				<div class="container">
+
+					<center>
+						<iframe src="${rootPath}/spms.do" width="510" height="510"
+							" frameborder=0></iframe>
+							
+					</center>
+					
+					
+					
+					
 
 				</div>
 				<!-- end content -->
@@ -42,7 +49,7 @@
 		</div> -->
 	</div>
 	<!-- end container -->
-	
+
 </body>
 </html>
 

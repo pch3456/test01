@@ -10,7 +10,7 @@
 		values(#{content},now(),#{email},#{pno})
 	</insert>
 
-	<select id="list" parameterType="int" resultType="Feed">
+	<select id="list" parameterType="map" resultType="Feed">
 		select
 		t1.FNO,
 		t1.EMAIL,
@@ -18,7 +18,7 @@
 		t1.REG_DATE as regDate,
 		t2.IMGURL as memPhoto 
 		from SPMS_FEEDS t1 left join SPMS_MEMIMG t2 
-		on t1.EMAIL = t2.EMAIL where PNO= 2 
+		on t1.EMAIL = t2.EMAIL where PNO= #{projectNo}  
 		order by t1.FNO desc
 	</select>
 	

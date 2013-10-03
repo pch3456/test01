@@ -17,6 +17,7 @@
 <link href="${rootPath}/css/bootstrap.css" rel="stylesheet">
 <link href="${rootPath}/css/bootstrap-theme.min.css" rel="stylesheet">
 
+
 </head>
 <body>
 	<!-- Generated at www.csscreator.com -->
@@ -31,16 +32,20 @@
 				<div id="content">
 					<h1><c:if test="${loginInfo.level == 1 }"><a href="list.do">멤버관리</a> > </c:if><a href="view.do?email=${memberInfo.email}"> ${memberInfo.name}</a></h1>
 					<div class="container">
+					
+					
 						<table class="table">
 							<tr>
 								<td><c:choose>
 										<c:when test="${memberInfo.photos!=null }">
 											<img width="120" height="150" id="memberPhot"
-												src="${rootPath }/file/${memberInfo.photos[0]}">
+												src="${rootPath }/file/${memberInfo.photos[0]}" style="-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
 										</c:when>
 										<c:otherwise>
 											<img width="120" height="150" id="memberPhot"
-												src="${rootPath}/images/test01.png">
+												src="${rootPath}/images/test01.png" style="-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
 										</c:otherwise>
 									</c:choose></td>
 								<td>

@@ -92,10 +92,12 @@
 									<tr> 
 									<th ><c:choose>
 											<c:when test="${feed.memPhoto !=null }">
-												<img src="${rootPath }/file/${feed.memPhoto}" width= "50px" height="70px" alt="picture">
+												<img src="${rootPath }/file/${feed.memPhoto}" width= "50px" height="70px" alt="picture" style="-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
 											</c:when>
 											<c:otherwise>
-												<img src="${rootPath}/images/test01.png" width= "50px" height="70px" alt="picture" >
+												<img src="${rootPath}/images/test01.png" width= "50px" height="70px" alt="picture" style="-webkit-box-shadow: 3px 3px 3px #7C7C7C;
+    box-shadow: 3px 3px 3px #7C7C7C;">
 											</c:otherwise>
 										</c:choose></th>
 										
