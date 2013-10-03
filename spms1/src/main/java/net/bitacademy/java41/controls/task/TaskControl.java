@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import net.bitacademy.java41.services.ProjectService;
 import net.bitacademy.java41.services.TaskService;
+import net.bitacademy.java41.vo.LoginInfo;
 import net.bitacademy.java41.vo.Member;
 import net.bitacademy.java41.vo.Task;
 
@@ -46,7 +47,7 @@ public class TaskControl{
 			,HttpSession session
 			,MultipartFile URL
 			,Task task) throws Exception {
-		Member member = (Member)session.getAttribute("member");
+		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
 
 		String filename = this.getNewFileName();
 		String path = sc.getAttribute("rootRealPath") + "file/" + filename;
@@ -55,7 +56,7 @@ public class TaskControl{
 
 		model.addAttribute("projectInfo",projectService.getProject(task.getPno()));
 
-		task.setEmail(member.getEmail());
+		task.setEmail(loginInfo.getLogEmail());
 		taskService.addTask(task);
 
 		model.addAttribute("list", taskService.getTaskList(task.getPno()));
@@ -85,10 +86,11 @@ public class TaskControl{
 	
 	@RequestMapping(value = "/update", method=RequestMethod.GET)
 	public String updateForm(Model model, int no) throws Exception {
-          
-		  model.addAttribute("taskInfo",taskService.getTask(no));
+		Task task = taskService.getTask(no);
+		model.addAttribute("taskInfo",task);
+		model.addAttribute("projectInfo",projectService.getProject(task.getPno()));
 
-		  return "task/updateForm";
+		return "task/updateForm";
 		
 	}
 

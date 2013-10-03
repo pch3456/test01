@@ -55,28 +55,31 @@ public class UserAuthControl{
 						HttpSession session,
 						Model model,
 						SessionStatus status) throws Exception {
+		try {
 		
-		LoginInfo loginInfo = authService.getLoginInfo(email, password);
-		
-		if(saveId != null){
-			Cookie cookie = new Cookie("email", email);
-			cookie.setMaxAge(60); 
-			response.addCookie(cookie);
-		} else{
-			Cookie cookie = new Cookie("email", null);
-			cookie.setMaxAge(0); 
-			response.addCookie(cookie);
-		}
-		
-		if (loginInfo != null) {
+			LoginInfo loginInfo = authService.getLoginInfo(email, password);
+			
+			if(saveId != null){
+				Cookie cookie = new Cookie("email", email);
+				cookie.setMaxAge(60); 
+				response.addCookie(cookie);
+			} else{
+				Cookie cookie = new Cookie("email", null);
+				cookie.setMaxAge(0); 
+				response.addCookie(cookie);
+			}
+			
+			
 			model.addAttribute("loginInfo", loginInfo);
-			
+				
 			return "redirect:../main.do";
+				
 			
-		} else {
+		} catch (Exception e) {
 			status.setComplete();
 			return "auth/loginFail";
 		}
+		
 	}
 
 }

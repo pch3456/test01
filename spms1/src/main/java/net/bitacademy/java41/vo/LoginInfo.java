@@ -6,13 +6,13 @@ public class LoginInfo {
 	String tel;
 	String photoPath;
 	int level;
-	String password;
+	String logPassword;
 	
-	public String getPassword() {
-		return password;
+	public String getLogPassword() {
+		return logPassword;
 	}
-	public LoginInfo setPassword(String password) {
-		this.password = password;
+	public LoginInfo setLogPassword(String logPassword) {
+		this.logPassword = logPassword;
 		return this;
 	}
 	public String getName() {

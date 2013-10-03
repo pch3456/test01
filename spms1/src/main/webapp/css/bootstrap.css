@@ -4085,9 +4085,9 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar {
-  position: relative;
-  z-index: 1000;
-  min-height: 50px;
+  /* position: relative;
+  
+  min-height: 50px; */
   margin-bottom: 20px;
   border: 1px solid transparent;
 }
@@ -4358,9 +4358,10 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar-form {
   padding: 10px 15px;
-  margin-top: 8px;
+  /* margin-top: 8px;
+  margin-bottom: 8px; */
   margin-right: -15px;
-  margin-bottom: 8px;
+  
   margin-left: -15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;

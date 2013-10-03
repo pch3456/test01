@@ -76,17 +76,13 @@ public class ProjectControl {
 	}
 
 	@RequestMapping("/delete")
-	public String delete(int level,int no,Model model) throws Exception {
+	public String delete(int no,Model model) throws Exception {
 
 		projectService.removeProject(no);
 		model.addAttribute("list", projectService.getProjectList());
 
-		if(level == 0){
+		
 			return "project/list";
-
-		}else{
-			return "project/list";
-		}
 
 
 	}

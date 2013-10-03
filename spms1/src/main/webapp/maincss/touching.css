@@ -139,6 +139,17 @@ margin: 0px;
 	
 	
 }
+
+#feedMemPhoto{
+	width: 10px;
+	height: 30px;
+	float: left;
+	margin-top: 10px;
+	margin-left: 20px;
+	
+	
+}
+
 #banner img {padding:10px 0px;} 
 #bannertitle{padding-top:20px;font-size:4em;font-weight:bold;float: left;margin-left: 40%}
 

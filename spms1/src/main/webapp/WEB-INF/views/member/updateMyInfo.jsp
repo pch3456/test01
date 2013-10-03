@@ -25,7 +25,7 @@
 
 				<jsp:include page="/sidebar.do"></jsp:include>
 				<div id="content">
-					<h1>멤버 변경</h1>
+					<h1><c:if test="${loginInfo.level == 1 }"><a href="list.do">멤버관리</a> > </c:if><a href="view.do?email=${memberInfo.email}"> ${memberInfo.name}</a> > 멤버 변경</h1>
 
 					<div class="container">
 						<form action="update.do" method="post" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
 													src="${rootPath}/images/test01.png">
 											</c:otherwise>
 										</c:choose></td></tr><tr>
-										<td><input type="file" name="photo"></td>
+										<td><input type="file" name="photo" style="margin-left: 100px"></td>
 										</tr>
 									</table>	
 									</td>
@@ -62,7 +62,7 @@
 												<td><input type="password" name="password1"><input
 													type="hidden" name="serverpwd"
 													value="${memberInfo.password}"></td>
-													<td><a href="passwordChange.do?email=${memberInfo.email}" class="btn btn-xs btn-success">암호변경</a></td>
+													<td><a href="passwordChange.do?email=${memberInfo.email}&name=${memberInfo.name}" class="btn btn-xs btn-success">암호변경</a></td>
 													<td></td>
 											</tr>
 											<tr>

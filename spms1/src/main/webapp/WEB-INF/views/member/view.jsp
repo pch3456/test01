@@ -29,7 +29,7 @@
 				<jsp:include page="/sidebar.do"></jsp:include>
 
 				<div id="content">
-					<h1>멤버 정보</h1>
+					<h1><c:if test="${loginInfo.level == 1 }"><a href="list.do">멤버관리</a> > </c:if><a href="view.do?email=${memberInfo.email}"> ${memberInfo.name}</a></h1>
 					<div class="container">
 						<table class="table">
 							<tr>

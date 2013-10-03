@@ -25,7 +25,7 @@
  		<jsp:include page="/sidebar.do"></jsp:include>
 
 <div id="content">
-<h1>암호변경</h1>
+<h1><a href="list.do">멤버관리</a> > <a href="view.do?email=${param.email}"> ${param.name}</a> > <a href="update.do?email=${param.email}"> 멤버 변경</a> > 암호변경</h1>
 <div class="container">
 <form action="passwordChange.do" method="post">
 <table class="table">

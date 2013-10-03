@@ -12,13 +12,14 @@
 
 	<select id="list" parameterType="int" resultType="Feed">
 		select
-		FNO,
-		EMAIL,
-		CONTENT,
-		REG_DATE as regDate
-		from SPMS_FEEDS
-		where PNO= #{value}
-		order by FNO desc
+		t1.FNO,
+		t1.EMAIL,
+		t1.CONTENT,
+		t1.REG_DATE as regDate,
+		t2.IMGURL as memPhoto 
+		from SPMS_FEEDS t1 left join SPMS_MEMIMG t2 
+		on t1.EMAIL = t2.EMAIL where PNO= 2 
+		order by t1.FNO desc
 	</select>
 	
 	<delete id="delete" parameterType="int">

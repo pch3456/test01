@@ -24,17 +24,37 @@
  	
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
-<h1>신규 프로젝트</h1>
+<h1><a href="${rootPath}/project/list.do">프로젝트</a> > 신규 프로젝트</h1>
+<div class="container">
 <form action="add.do" method="post">
-프로젝트명: <input type="text" name="title"><br>
-내용:<br> 
-<textarea name="content" rows="4" cols="50"></textarea><br>
-시작일: <input type="text" name="startDate" placeholder="예)2013-4-5"><br>
-종료일: <input type="text" name="endDate" placeholder="예)2013-6-5"><br>
-태그: <input type="text" name="tag" placeholder="예)태그1 태그2 태그3 (공백으로 구분)"><br>
-<input type="submit" value="등록"><input type="reset" value="취소"><br>
+<table class="table">
+<tr>
+<th>프로젝트명</th>
+<td><input type="text" name="title"></td>
+</tr>
+<tr>
+<th>내용</th>
+<td><textarea name="content" rows="4" cols="22"></textarea></td>
+</tr>
+<tr>
+<th>시작일</th>
+<td><input type="text" name="startDate" placeholder="예)2013-4-5"></td>
+</tr>
+<tr>
+<th>종료일</th>
+<td><input type="text" name="endDate" placeholder="예)2013-6-5"></td>
+</tr>
+<tr>
+<th>태그</th>
+<td><input type="text" name="tag" placeholder="예)태그1 태그2 태그3 (공백으로 구분)"></td>
+</tr>
+</table>
+<p align="right">
+<input type="submit" value="등록" class="btn btn-success"> <input type="reset" value="취소" class="btn btn-warning"> <a href="list.do" class="btn btn-primary">목록</a>
+</p>
 </form>
-<p><a href="list.do">[목록]</a></p>
+</div>
+
 
 
 

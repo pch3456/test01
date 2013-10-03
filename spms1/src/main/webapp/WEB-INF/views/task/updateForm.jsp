@@ -24,23 +24,51 @@
  	
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
-<h1>테스크 정보변경</h1>
-<form action="update.do" method="post" enctype="multipart/form-data">
-*프로젝트 번호: <input type="text" name="pno" value="${taskInfo.pno}" readonly><br>
-*테스크 번호: <input type="text" name="tno" value="${taskInfo.tno}" readonly><br>
-*테스크명: <input type="text" name="title" value="${taskInfo.title}"><br>
-*내용: <input type = "text" name="context"  value="${taskInfo.context }"><br>
-시작일: <input type="text" name="startDate" value="${taskInfo.startDate}"><br>
-종료일: <input type="text" name="endDate"value="${taskInfo.endDate}"><br>
-UI Proto: <input type="file" name="URL"  value="${taskInfo.UIProtoURL}"><br>
+<h1><a href="${rootPath}/project/list.do">프로젝트</a> > <a href="${rootPath}/project/view.do?no=${projectInfo.no}">${projectInfo.title }</a> > <a href="${rootPath}/task/view.do?no=${taskInfo.tno}&pno=${taskInfo.pno}">${taskInfo.title}</a> > 변경</h1>
 
-<input type="submit" value="변경">
-<input type="reset" value="취소">
+<div class="container">
+
+<form action="update.do" method="post" enctype="multipart/form-data">
+<table class="table">
+<tr>
+<th>프로젝트 번호</th>
+<td><input type="text" name="pno" value="${taskInfo.pno}" readonly></td>
+</tr>
+<tr>
+<th>테스크 번호</th>
+<td><input type="text" name="tno" value="${taskInfo.tno}" readonly></td>
+</tr>
+<tr>
+<th>테스크명</th>
+<td><input type="text" name="title" value="${taskInfo.title}"></td>
+</tr>
+<tr>
+<th>내용</th>
+<td><input type = "text" name="context"  value="${taskInfo.context }"></td>
+</tr>
+<tr>
+<th>시작일</th>
+<td><input type="text" name="startDate" value="${taskInfo.startDate}"></td>
+</tr>
+<tr>
+<th>종료일</th>
+<td><input type="text" name="endDate"value="${taskInfo.endDate}"></td>
+</tr>
+<tr>
+<th>UI Proto</th>
+<td><input type="file" name="URL"  value="${taskInfo.UIProtoURL}" style="margin-left: 290px"></td>
+</tr>
+</table>
+<p align="right">
+<input type="submit" value="변경" class="btn btn-success">
+<input type="reset" value="취소" class="btn btn-primary">
+<a href="view.do?no=${taskInfo.tno }&pno=${taskInfo.pno}" class="btn btn-warning">이전</a>
+</p>
 </form>
 <p>
-<a href="view.do?no=${taskInfo.tno }&pno=${taskInfo.pno}">[이전]</a>
-</p>
 
+</p>
+</div>
 	</div><!-- end content -->
 		</div><!-- end inner -->
 	</div><!-- end outer -->

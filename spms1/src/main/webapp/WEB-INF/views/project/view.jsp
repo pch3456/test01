@@ -80,10 +80,6 @@
 						</tr>
 						<tr>
 							<td>태그</td>
-							<td>${memberInfo.tag }</td>
-						</tr>
-						<tr>
-							<td>태그</td>
 							<td>${project.tag }</td>
 						</tr>
 					</table>
@@ -92,7 +88,7 @@
 					<p align="right">
 					<a href="list.do" class="btn btn-success">목록</a> 
 					<a href="update.do?no=${project.no}" class="btn btn-primary">변경</a> 
-<a href="delete.do?no=${project.no}&level=${sessionScope.member.level}" class="btn btn-danger">삭제</a>
+<a href="delete.do?no=${project.no}" class="btn btn-danger">삭제</a>
 </p>
 
 				</div>

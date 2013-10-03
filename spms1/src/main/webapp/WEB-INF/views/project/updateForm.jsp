@@ -24,20 +24,45 @@
  	
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
-<h1>프로젝트 정보변경</h1>
+<h1><a href="${rootPath}/project/list.do">프로젝트</a> > <a href="${rootPath}/project/view.do?no=${projectInfo.no}">${projectInfo.title }</a> > 변경
+</h1>
+<div class="container">
 <form action="update.do" method="post">
-*번호: <input type="text" name="no" value="${projectInfo.no}" readonly><br>
-*프로젝트명: <input type="text" name="title" value="${projectInfo.title}"><br>
-*내용: <input type = "text" name="content"  value="${projectInfo.content }"><br>
-시작일: <input type="text" name="startDate" value="${projectInfo.startDate}"><br>
-종료일: <input type="text" name="endDate"value="${projectInfo.endDate}"><br>
-태그: <input type="text" name="tag" value="${projectInfo.tag}"><br>
-
-<input type="submit" value="변경">
-<input type="reset" value="취소">
+<table class="table">
+<tr>
+<th>번호</th>
+<td><input type="text" name="no" value="${projectInfo.no}" readonly></td>
+</tr>
+<tr>
+<th>프로젝트명</th>
+<td><input type="text" name="title" value="${projectInfo.title}"></td>
+</tr>
+<tr>
+<th>내용</th>
+<td><input type = "text" name="content"  value="${projectInfo.content }"></td>
+</tr>
+<tr>
+<th>시작일</th>
+<td><input type="text" name="startDate" value="${projectInfo.startDate}"></td>
+</tr>
+<tr>
+<th>종료일</th>
+<td><input type="text" name="endDate"value="${projectInfo.endDate}"></td>
+</tr>
+<tr>
+<th>태그</th>
+<td><input type="text" name="tag" value="${projectInfo.tag}"></td>
+</tr>
+</table>
+<p align="right">
+<input type="submit" value="변경" class="btn btn-success">
+<input type="reset" value="취소" class="btn btn-warning">
+<a href="list.do" class="btn btn-primary">목록</a>
+</p>
 </form>
+</div>
 <p>
-<a href="list.do">[목록]</a>
+
 </p>
 
 	</div><!-- end content -->

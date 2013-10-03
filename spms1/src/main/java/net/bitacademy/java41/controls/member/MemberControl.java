@@ -7,6 +7,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import net.bitacademy.java41.services.MemberService;
+import net.bitacademy.java41.vo.LoginInfo;
 import net.bitacademy.java41.vo.Member;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /* @SessionAttributes("member")
@@ -23,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 @Controller
-//@SessionAttributes("loginInfo")
+@SessionAttributes("loginInfo")
 @RequestMapping("/member")
 public class MemberControl{
 	@Autowired ServletContext sc;
@@ -115,15 +117,23 @@ public class MemberControl{
 
 	}
 	
-	@RequestMapping("/passwordChange")
+	@RequestMapping(value = "/passwordChange", method=RequestMethod.GET)
 	public String passwordChagne(Model model, String email, String password, String newPassword, String newPassword2) throws Exception {
 		
-		if (newPassword == null) {
-			return form2();
-		} else {
+		
+			return "member/passwordForm";
+		
+	}
+	
+	@RequestMapping(value = "/passwordChange", method=RequestMethod.POST)
+	public String passwordChagne1(LoginInfo loginInfo, Model model, String email, String password, String newPassword, String newPassword2, HttpSession session) throws Exception {
+		
+		
 			if (newPassword.equals(newPassword2)) {
 				if (memberService.changePassword(email, password, newPassword)) {
 					model.addAttribute("status", "SUCCESS");
+					loginInfo.setLogPassword(newPassword);
+					model.addAttribute("loginInfo",loginInfo);
 				} else {
 					model.addAttribute("status", "OLD_PASSWORD_ERROR");
 				}
@@ -132,12 +142,9 @@ public class MemberControl{
 			}
 			
 			return "member/passwordChangeResult";
-		}
+		
 	}
 	
-	protected String form2() {
-		return "member/passwordForm";
-	}
 	
 
 }

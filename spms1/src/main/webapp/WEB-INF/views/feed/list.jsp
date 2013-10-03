@@ -26,13 +26,51 @@
 
 				<jsp:include page="/sidebar.do"></jsp:include>
 				<div id="content">
+					<h1>
+						<a href="${rootPath}/project/list.do">프로젝트</a> > <a
+							href="${rootPath}/project/view.do?no=${projectInfo.no}">${projectInfo.title }</a>
+						> 피드
+					</h1>
+					<br>
 					<div class="container">
-						<h1>${projectInfo.title }'s Feeds</h1><br>
+
+						<div class="navbar navbar-default" style="max-height: 80px;">
+							<div class="container">
+								<div class="navbar-header" style="margin-left: -130px;">
+									<button type="button" class="navbar-toggle"
+										data-toggle="collapse" data-target=".navbar-collapse">
+										<span class="icon-bar"></span> <span class="icon-bar"></span>
+										<span class="icon-bar"></span>
+									</button>
+									<a class="navbar-brand" href="#"
+										style="font-size: 20px; font-style: oblique; color: maroon;">Menu</a>
+
+									<ul class="nav navbar-nav">
+										<li><a
+											href="${rootPath}/project/view.do?no=${projectInfo.no}">기본정보</a></li>
+
+									</ul>
+									<ul class="nav navbar-nav">
+										<li><a
+											href="${rootPath}/task/list.do?projectNo=${projectInfo.no}">작업목록</a></li>
+
+									</ul>
+									<ul class="nav navbar-nav">
+										<li><a
+											href="${rootPath}/feed/list.do?projectNo=${projectInfo.no}">피드</a></li>
+
+									</ul>
+									<!--/.nav-collapse -->
+								</div>
+							</div>
+						</div>
+
 
 
 						<form action="add.do" method="post">
 							<input type="hidden" name="pno" value="${projectInfo.no }">
-							<textarea class="well" name="content" rows="3" cols="135"></textarea>
+							<textarea class="well" name="content" rows="3" cols="135"
+								placeholder="프로젝트에 대한 생각을 자유롭게 적어주세요."></textarea>
 							<br>
 							<div style="float: right">
 								<input class="btn btn-primary" type="submit" value="등록"
@@ -44,18 +82,43 @@
 						<br>
 						<HR color="black" />
 						<br>
+						
+							<c:forEach var="feed" items="${list}">
+								<div class="panel panel-success">
+									
+									
+										<div class="panel-heading">
+										<table cellpadding="10">
+									<tr> 
+									<th ><c:choose>
+											<c:when test="${feed.memPhoto !=null }">
+												<img src="${rootPath }/file/${feed.memPhoto}" width= "50px" height="70px" alt="picture">
+											</c:when>
+											<c:otherwise>
+												<img src="${rootPath}/images/test01.png" width= "50px" height="70px" alt="picture" >
+											</c:otherwise>
+										</c:choose></th>
+										
+										
+									<td>
 
+											<h3 class="panel-title">${feed.email} </h3><h6 align="left">${feed.regDate}
+											
+											<c:if test="${loginInfo.logEmail == feed.email}">
+												<a href="delete.do?fno=${feed.fno}&pno=${projectInfo.no }">[삭제]</a>
+											</c:if></h6>
+											</td>
+										</tr>
+										</table>
+										</div>
+										<div class="panel-body">${feed.content}</div>
+										
+									</div>
+									
+								
 
-						<c:forEach var="feed" items="${list}">
-							<div class="panel panel-success">
-								<div class="panel-heading">
-									<h3 class="panel-title">${feed.email}</h3>
-									${feed.regDate} 
-									<c:if test="${loginInfo.logEmail == feed.email}"><a href="delete.do?fno=${feed.fno}&pno=${projectInfo.no }">[삭제]</a></c:if>
-								</div>
-								<div class="panel-body">${feed.content}</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						
 					</div>
 
 				</div>

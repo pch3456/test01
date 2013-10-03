@@ -12,7 +12,7 @@
         	MNAME as name,
         	TEL,
         	LEVEL,
-        	PWD as password  
+        	PWD as logPassword  
         from SPMS_MEMBS  
         where EMAIL=#{email} and PWD=#{password}
     </select> 

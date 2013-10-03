@@ -12,6 +12,23 @@ public class Feed implements Serializable{
 	Date regDate;
 	String email;
 	int pno;
+	String memPhoto;
+	String feedPhoto;
+	
+	public String getMemPhoto() {
+		return memPhoto;
+	}
+	public Feed setMemPhoto(String memPhoto) {
+		this.memPhoto = memPhoto;
+		return this;
+	}
+	public String getFeedPhoto() {
+		return feedPhoto;
+	}
+	public Feed setFeedPhoto(String feedPhoto) {
+		this.feedPhoto = feedPhoto;
+		return this;
+	}
 	public int getFno() {
 		return fno;
 	}
