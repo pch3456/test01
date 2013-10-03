@@ -32,7 +32,7 @@
 
 						<form action="add.do" method="post">
 							<input type="hidden" name="pno" value="${projectInfo.no }">
-							<textarea class="well" name="content" rows="3" cols="180"></textarea>
+							<textarea class="well" name="content" rows="3" cols="135"></textarea>
 							<br>
 							<div style="float: right">
 								<input class="btn btn-primary" type="submit" value="등록"
@@ -51,7 +51,7 @@
 								<div class="panel-heading">
 									<h3 class="panel-title">${feed.email}</h3>
 									${feed.regDate} 
-									<c:if test="${loginInfo.email == feed.email}"><a href="delete.do?fno=${feed.fno}&pno=${projectInfo.no }">[삭제]</a></c:if>
+									<c:if test="${loginInfo.logEmail == feed.email}"><a href="delete.do?fno=${feed.fno}&pno=${projectInfo.no }">[삭제]</a></c:if>
 								</div>
 								<div class="panel-body">${feed.content}</div>
 							</div>

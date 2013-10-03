@@ -1,5 +1,6 @@
 package net.bitacademy.java41.dao;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -32,6 +33,10 @@ public interface MemberDao {
      int photoRemove(String email) throws Exception;
  
 	 void addPhoto(Map<String,String> paramMap) throws Exception;
+
+	String getPhoto(String email) throws Exception;
+
+	void photoRemove(HashMap<String, String> paramMap) throws Exception;
 	
 }
 

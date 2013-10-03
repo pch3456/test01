@@ -26,7 +26,8 @@
  	
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
-<h1>${projectInfo.title }'s Task</h1>
+<h1><a href="${rootPath}/project/list.do">프로젝트</a> > <a href="${rootPath}/project/view.do?no=${projectInfo.no}">${projectInfo.title }</a> > 작업목록</h1>
+<div class="container">
 <table class="table">
 <tr>
 	<th>Task</th>
@@ -52,7 +53,7 @@
 	</c:otherwise>
 </c:choose>
 
-
+</div>
 	</div><!-- end content -->
 		</div><!-- end inner -->
 	</div><!-- end outer -->

@@ -34,7 +34,7 @@ public class FeedControl {
 			Feed feed,
 			HttpSession session) throws Exception {
 		LoginInfo loginInfo = (LoginInfo)session.getAttribute("loginInfo");
-		String email = loginInfo.getEmail();
+		String email = loginInfo.getLogEmail();
 		feed.setEmail(email);
 
 		feedService.addFeed(feed);

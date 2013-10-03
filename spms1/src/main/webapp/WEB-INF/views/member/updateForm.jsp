@@ -25,6 +25,8 @@
  		<jsp:include page="/sidebar.do"></jsp:include>
 <div id="content">
 <h1>멤버 변경</h1>
+
+
 <form action="update.do" method="post"  enctype="multipart/form-data">
 *이메일: <input type="text" name="email" value="${memberInfo.email}" readonly><br>
 *암호: <input type="password" name="password1" ><a href="passwordChange.do?email=${member.email}">[암호변경]</a><br>

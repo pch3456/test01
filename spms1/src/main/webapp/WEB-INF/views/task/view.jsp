@@ -28,37 +28,51 @@
 <div id="submenu">
 </div>
 
-<h1>테스크 정보</h1>
-번호: ${task.tno}<br>
-테스크명: ${task.title }<br>
-내용:<br> 
-${task.context }<br>
-시작일: ${task.startDate }<br>
-종료일: ${task.endDate }<br>
-UI 프로토타입 : <br>
-<c:choose>
+<h1><a href="${rootPath}/project/list.do">프로젝트</a> > <a href="${rootPath}/project/view.do?no=${projectInfo.no}">${projectInfo.title }</a> > ${task.title}</h1>
+<div class="container">
+
+<table class="table">
+<tr>
+<th>번호</th>
+<td>${task.tno}</td>
+</tr>
+<tr>
+<th>테스크명</th>
+<td>${task.title }</td>
+</tr>
+<tr>
+<th>내용</th>
+<td>${task.context }</td>
+</tr>
+<tr>
+<th>시작일</th>
+<td>${task.startDate }</td>
+</tr>
+<tr>
+<th>종료일</th>
+<td>${task.endDate }</td>
+</tr>
+<tr>
+<th>UI 프로토타입</th>
+<td><c:choose>
 	<c:when test="${task.UIProtoURL!=null }">
 		<img id="UIProto" src="${rootPath }/file/${task.UIProtoURL}">
 	</c:when>
-</c:choose>
+</c:choose></td>
+</tr>
+
+</table>
+
+<p align="right">
 
 
-<p>
-
-<c:choose>
-	<c:when test="${loginInfo.level == 0}">
 		<a href="list.do?projectNo=${task.pno }">[목록]</a>
 		<a href="update.do?no=${task.tno}">[변경]</a>
 		<a href="delete.do?no=${task.tno}&pno=${projectInfo.no}">[삭제]</a>
-	</c:when>
-	<c:otherwise>
-	<a href="list.do?projectNo=${task.pno }">[목록]</a>
-	</c:otherwise>
-</c:choose>
 </p>
-<p>
 
-</p>
+</div>
+
 
 	</div><!-- end content -->
 		</div><!-- end inner -->

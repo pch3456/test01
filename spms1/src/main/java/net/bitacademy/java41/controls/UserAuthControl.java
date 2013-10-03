@@ -70,6 +70,7 @@ public class UserAuthControl{
 		
 		if (loginInfo != null) {
 			model.addAttribute("loginInfo", loginInfo);
+			
 			return "redirect:../main.do";
 			
 		} else {

@@ -20,4 +20,6 @@ public interface MemberService {
 	 Member get(String email) throws Exception;
 
 	 void change(Member member) throws Exception;
+
+	
 }

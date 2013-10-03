@@ -5,15 +5,18 @@ import javax.servlet.http.HttpSession;
 import net.bitacademy.java41.services.ProjectService;
 import net.bitacademy.java41.vo.Member;
 import net.bitacademy.java41.vo.Project;
+import net.bitacademy.java41.vo.LoginInfo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes("loginInfo")
 @RequestMapping("/project")
 public class ProjectControl {
 	@Autowired ProjectService projectService;
@@ -42,8 +45,9 @@ public class ProjectControl {
 	public String add(
 			Project project,
 			HttpSession session) throws Exception {
-		Member member = (Member)session.getAttribute("member");
-		project.setLeader(member.getEmail());
+		
+		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+		project.setLeader(loginInfo.getLogEmail());
 
 		projectService.addProject(project);
 

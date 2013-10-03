@@ -8,10 +8,11 @@
             parameterType="map" 
             resultType="LoginInfo"> 
         select 
-        	EMAIL,
+        	EMAIL as logEmail,
         	MNAME as name,
         	TEL,
-        	LEVEL 
+        	LEVEL,
+        	PWD as password  
         from SPMS_MEMBS  
         where EMAIL=#{email} and PWD=#{password}
     </select> 
@@ -60,7 +61,7 @@
       
     <update id="photoChange" parameterType="map"> 
         update SPMS_MEMIMG set 
-                IMGURL=#{path}  where EMAIL=#{email} 
+                IMGURL=#{path} where EMAIL=#{email} 
     </update> 
       
     <delete id="remove" parameterType="String"> 
@@ -79,7 +80,7 @@
                 where EMAIL=#{email} 
     </delete> 
       
-    <delete id="photoRemove" parameterType="String"> 
+    <delete id="photoRemove" parameterType="map"> 
     delete from SPMS_MEMIMG 
                 where EMAIL=#{email} 
     </delete> 

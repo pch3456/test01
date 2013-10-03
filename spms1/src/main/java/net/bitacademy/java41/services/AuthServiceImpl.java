@@ -19,14 +19,8 @@ public class AuthServiceImpl implements AuthService{
 		paramMap.put("email", email);
 		paramMap.put("password", password);
 		LoginInfo loginInfo = memberDao.getLoginInfo(paramMap);
+		loginInfo.setPhotoPath(memberDao.getPhoto(email));
 		
-		if(loginInfo != null){
-			List<String> photoList = memberDao.listPhoto(email);
-			if(photoList != null && photoList.size() > 0){
-				loginInfo.setPhotoPath(photoList.get(0));
-			}
-		}
-		
-		return memberDao.getLoginInfo(paramMap);
+		return loginInfo;
 	}
 }

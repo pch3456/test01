@@ -1,8 +1,10 @@
+
 package net.bitacademy.java41.controls.member;
 
 import java.io.File;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import net.bitacademy.java41.services.MemberService;
 import net.bitacademy.java41.vo.Member;
@@ -12,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /* @SessionAttributes("member")
@@ -22,7 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 
 @Controller
-@SessionAttributes("loginInfo")
+//@SessionAttributes("loginInfo")
 @RequestMapping("/member")
 public class MemberControl{
 	@Autowired ServletContext sc;
@@ -41,6 +42,15 @@ public class MemberControl{
 	protected String form() {
 		return "member/newForm";
 	}
+
+	synchronized private String getNewFileName() {
+		long millis = System.currentTimeMillis(); 
+		if (currTime != millis) {
+			currTime = millis;
+			count = 0;
+		}
+		return "member_" + millis + "_" + (++count);
+	}
 	
 	@RequestMapping(value = "/add", method=RequestMethod.POST)
 	protected String add(Model model, Member member,MultipartFile photo) throws Exception {
@@ -55,40 +65,33 @@ public class MemberControl{
 		return "redirect:list.do";
 	}
 	
-	synchronized private String getNewFileName() {
-		long millis = System.currentTimeMillis(); 
-		if (currTime != millis) {
-			currTime = millis;
-			count = 0;
-		}
-		return "member_" + millis + "_" + (++count);
-	}
 
 	@RequestMapping("/view")
 	public String view(Model model, String email) throws Exception {
 		model.addAttribute("memberInfo", memberService.getMember(email));
-
 		return "member/view";
 	}
 	
 	@RequestMapping(value = "/update", method=RequestMethod.GET)
-	public String updateForm(Model model, String email) throws Exception {
-		  model.addAttribute("memberInfo",memberService.get(email));
-  		  
+	public String updateForm(Model model, String email, HttpSession session) throws Exception {
+		  model.addAttribute("memberInfo",memberService.getMember(email));
+		  
 		  return "member/updateMyInfo";
   			
   }
 
 
 	@RequestMapping(value = "/update", method=RequestMethod.POST)
-	public String update(Model model, Member member, String password1) throws Exception {
+	public String update(Model model, Member member, String password1, MultipartFile photo) throws Exception {
 		Member member1 = memberService.get(member.getEmail());
 		String password = member1.getPassword();
-		System.out.println(password);
-		System.out.println(password1);
 		if(password.equals(password1)){
-			member.setPassword(member1.getPassword());
+			String filename = this.getNewFileName();
+			String path = sc.getAttribute("rootRealPath") + "file/" + filename;
+			photo.transferTo(new File(path));
+			member.setPhotos(new String[]{filename});
 			memberService.change(member);
+			
 		} else{
 			return "member/viewfail";
 		}
@@ -100,17 +103,14 @@ public class MemberControl{
 	}
 
 	@RequestMapping("/delete")
-	public String execute(Model model, int level, String email) throws Exception {
+	public String execute(Model model, String email) throws Exception {
 		
 		memberService.deleteMember(email);
 		
 		model.addAttribute("list", memberService.getMemberList());
-		if(level == 0){
-			return "auth/LoginForm";
-	
-		}else{
-			return "member/list";
-		}
+		
+		return "member/list";
+		
 	
 
 	}

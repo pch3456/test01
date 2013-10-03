@@ -86,9 +86,6 @@ public class MemberControl{
 		}
 		return "member/viewsucess";
 
-
-		
-
 	}
 
 	@RequestMapping("/delete")

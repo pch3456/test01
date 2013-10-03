@@ -50,7 +50,12 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	public Member getMember(String email) throws Exception {
-		return memberDao.get(email);
+		Member member = memberDao.get(email);
+		String[] photo = {memberDao.getPhoto(email)};
+		if(photo[0] !=null){
+		member.setPhotos(photo);
+		}
+		return member; 
 
 	}
 	
@@ -103,17 +108,31 @@ public class MemberServiceImpl implements MemberService {
 	public void change(Member member) throws Exception {
 
 		try{
+			
+//			memberDao.add(member);
+//			String[] photos = member.getPhotos();
+//			if (photos != null) {
+//				HashMap<String,String> paramMap = new HashMap<String,String>();
+//				String email = member.getEmail(); 
+//				paramMap.put("email", email);
+//				for (String path : photos) {
+//					paramMap.put("path", path);
+//					memberDao.addPhoto(paramMap);
+//				}
+//			}
+			memberDao.change(member);
 			String[] photos = member.getPhotos();
 			if (photos != null) {
 				HashMap<String,String> paramMap = new HashMap<String,String>();
 				String email = member.getEmail();
 				for (String path : photos) {
-		            paramMap.put("member", email);
-		            paramMap.put("photo", path);
-					memberDao.photoChange(paramMap);
+					paramMap.put("email", email);
+		            paramMap.put("path", path);
+		            memberDao.photoRemove(paramMap);
+					memberDao.addPhoto(paramMap);
 				}
 			}
-			memberDao.change(member);
+			
 
 		} catch(Exception e){
 
@@ -122,4 +141,5 @@ public class MemberServiceImpl implements MemberService {
 
 		}
 	}
+
 }
